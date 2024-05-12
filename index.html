@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akbotargram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5; 
+    color: #333;
+}
+
+nav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: #333; 
+    color: white; 
+    padding: 0 20px; 
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit; 
+}
+
+#posts {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+#postsBox {
+    width: 60%; 
+}
+
+.post {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.avaBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ava {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    margin-right: 15px;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.like {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+.like:hover {
+    transform: scale(1.1); 
+}
+
+
+input {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+}
+
+.knopka {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+.knopka:hover {
+    background-color: #555; 
+}
+
+.link {
+    margin-left: 20px; 
+}
+img{
+    height: 250px;
+    width: 250px;
+}
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.comment-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-content {
+    margin-left: 10px;
+}
+
+.comment-text {
+    margin-bottom: 5px;
+}
+
+.new-comment input {
+    width: calc(100% - 80px);
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.new-comment button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-comment button:hover {
+    background-color: #555;
+}
+.imgavatar {
+    height: 70px;
+    width: 70px;
+}
+h1 {
+    margin-left: 10px;
+}
+    </style>
+}
+</head>
+<body>
+    <nav> 
+        <img class="imgavatar" src="photo6.png"> 
+        <h1>Akbotagram</h1>
+    </nav> 
+    <section id="posts"> 
+        <div id="postsBox"> 
+            <div id="firstPost" class="post"> 
+                <div class="avaBox"> 
+                    <img id="imgpost" class="ava" src="photo5.jfif"> 
+                    <b>Akbota</b> 
+                </div> 
+                <img class="img" src="photo4.jfif"> 
+                <div> 
+                    На фотосессии:) 
+                </div> 
+                <div class="likes"> 
+                    <img class="like" src="hhh-removebg-preview.png" onclick="likePost(this)" onmouseover="hoverLike(this)" onmouseout="unhoverLike(this)">
+                    <p>Likes: <span class="likeCount">0</span></p>
+                </div> 
+<div class="comments-section">
+    <h3>Comments</h3>
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png" alt="User Avatar">
+        </div>
+        <div class="comment-content">
+            <p class="comment-text">Great photo! 📸</p>
+            <p class="comment-user">By: User123</p>
+        </div>
+    </div>
+    <div class="new-comment">
+        <input type="text" placeholder="Add a comment...">
+        <button onclick="addComment()">Post</button>
+    </div>
+</div>
+            </div>     
+        </div> 
+    </section> 
+
+    <script>
+    let post = document.getElementById("firstPost"); 
+    let postsBox = document.getElementById("postsBox") 
+    let imgurls = [ 
+        "photo1.jfif", 
+        "photo2.jfif" ,
+        "photo3.jfif"
+    ] 
+    let texts = [
+        "Всем доброе утро! Как настроение?",
+        "На отдыхе с сестрой<3",
+        "С наступающим!!!"
+    ];
+
+    for(let i = 0; i < 100; i++){ 
+        let newpost = post.cloneNode(true); 
+        let imgpost = newpost.getElementsByClassName("img")[0];
+        let text = newpost.querySelector(".post > div:nth-child(3)");
+        imgpost.setAttribute("src", imgurls[i % 3]);
+        text.textContent = texts[i % 3];
+        postsBox.appendChild(newpost); 
+    }
+
+
+    function likePost(likeButton) {
+        const likeCountElement = likeButton.parentNode.parentNode.querySelector(".likeCount");
+        let likeCount = parseInt(likeCountElement.innerText);
+        likeCount++;
+        likeCountElement.innerText = likeCount;
+    }
+
+    function addComment() {
+    var commentInput = document.querySelector('.new-comment input');
+    var commentText = commentInput.value;
+    if (commentText.trim() !== '') {
+        var commentsContainer = document.querySelector('.comments-section');
+        var newComment = document.createElement('div');
+        newComment.classList.add('comment');
+        newComment.innerHTML = `
+            <div class="comment-avatar">
+                <img src="photo5.jfif" alt="User Avatar">
+            </div>
+            <div class="comment-content">
+                <p class="comment-text">${commentText}</p>
+                <p class="comment-user">By: You</p>
+            </div>
+        `;
+        commentsContainer.insertBefore(newComment, document.querySelector('.new-comment'));
+        commentInput.value = '';
+    } else {
+        alert('Please enter a comment.');
+    }
+}
+
+</script>
+
+</body> 
+</html>
